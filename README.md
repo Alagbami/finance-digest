@@ -97,8 +97,6 @@ Colors	#0E0D13 bg, gray‑300/400, white
 
 📂 Code Structure
 graphql
-Copy
-Edit
 .
 ├── app/
 │   ├── layout.tsx             # Server layout (header & global font)
@@ -106,15 +104,15 @@ Edit
 │   ├── globals.css            # Tailwind + base styles
 ├── components/
 │   ├── NewsList.tsx           # Client list container
-│   ├── NewsItem.tsx           # Pixel‑perfect card (mobile & desktop)
-│   ├── LoadingState.tsx       # Spinner
-│   ├── ErrorState.tsx         # Retry UI
+│   ├── NewsItem.tsx           # Pixel‑perfect card component
+│   ├── LoadingState.tsx       # Spinner component
+│   ├── ErrorState.tsx         # Error / retry component
 │   └── ReactQueryProvider.tsx # QueryClientProvider wrapper
 ├── utils/
-│   ├── api.ts                 # Axios instance + fetchMarketNews helper
-│   └── hooks.ts               # `useMarketNews` (React Query hook)
-├── .env.local                 # API key
-├── tailwind.config.js         # Custom font + theme
+│   ├── api.ts                 # Axios instance & fetchMarketNews helper
+│   └── hooks.ts               # `useMarketNews` React Query hook
+├── .env.local                 # API key (gitignored)
+├── tailwind.config.js         # Custom font & theme extensions
 ├── jest.config.js             # Testing config (ts‑jest + jsdom)
 └── jest.setup.js              # jest‑dom setup
 🔭 Next Steps & Extras
