@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Finance Digest
 
-## Getting Started
+A responsive, Figma‑driven “Finance Digest” web application built with Next.js and React Query. It fetches general market news from the Finnhub API and displays it in a mobile‑first, pixel‑perfect layout matching the recruiter’s Rubik‑based Figma design.
 
-First, run the development server:
+---
 
-```bash
+## 🚀 Project Overview
+
+- **Live Preview**: _Not deployed yet_  
+- **Deadline**: 16 July 2025  
+- **Role**: Senior Frontend Engineer assessment for Maon Technology Ltd  
+- **Duration**: 8 hours allotted  
+
+---
+
+## 📑 Features
+
+- **API‑driven news feed**  
+  - Fetches “general” category via Finnhub’s `/news?category=general` endpoint  
+  - Displays thumbnail, source, formatted date, and headline  
+  - Clickable cards open the original article in a new tab  
+
+- **Figma‑perfect UI**  
+  - Mobile‑first horizontal cards (96×96 px thumbnail) with Rubik font  
+  - Dark‑mode palette (`#0E0D13`, gray‑300/400 meta text, white headlines)  
+  - Rounded corners (12 px), consistent 12 px padding, 4 px micro‑spacing  
+  - Hover lift & shadow feedback for desktop  
+
+- **Responsive design**  
+  - 1‑column on mobile, 2‑columns at ≥640 px, 4columns at ≥1024 px  
+  - Grid and flex layouts adapt seamlessly  
+
+- **Robust UX**  
+  - Loading spinner during fetch  
+  - Graceful error state with retry button  
+  - Placeholder when thumbnail is missing  
+
+---
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 14 (App Router) + TypeScript  
+- **Styling**: Tailwind CSS (extended via `tailwind.config.js`)  
+- **Data Fetching**: Axios + React Query (`@tanstack/react-query`)  
+- **Fonts**: Rubik via `next/font/google`  
+- **Date Formatting**: date‑fns  
+- **Testing**: Jest + ts‑jest + React Testing Library + jest‑dom  
+- **Env Management**: `.env.local` exposes `NEXT_PUBLIC_FINNHUB_API_KEY`  
+
+---
+
+## 🔧 Setup & Running Locally
+
+1. Clone repo and install dependencies:  
+   ```bash
+   git clone <your-repo-url> finance-digest
+   cd finance-digest
+   npm install
+
+
+Create a .env.local in project root with:
+
+bash
+Copy
+Edit
+NEXT_PUBLIC_FINNHUB_API_KEY=your_finnhub_api_key_here
+Run the development server:
+
+bash
+Copy
+Edit
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Visit http://localhost:3000 to view.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+✅ Testing
+Run unit tests in watch mode:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+bash
+Copy
+Edit
+npm test
+Coverage:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Hook: useMarketNews tested for loading & data states via Jest mocks
 
-## Learn More
+Component: NewsItem tested for image/no‑image rendering and correct props
 
-To learn more about Next.js, take a look at the following resources:
+📐 Design Tokens
+Token	Value
+Border radius	12px (rounded-[12px])
+Card padding	p-3 mobile / p-4 desktop
+Thumbnail size	96×96 px mobile, full × 179 px desktop
+Font family	Rubik (400, 500, 600, 700)
+Meta text size	text-[10px]
+Headline size	text-[14px]
+Colors	#0E0D13 bg, gray‑300/400, white
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+📂 Code Structure
+graphql
+Copy
+Edit
+.
+├── app/
+│   ├── layout.tsx             # Server layout (header & global font)
+│   ├── page.tsx               # Client HomePage wrapped in ReactQueryProvider
+│   ├── globals.css            # Tailwind + base styles
+├── components/
+│   ├── NewsList.tsx           # Client list container
+│   ├── NewsItem.tsx           # Pixel‑perfect card (mobile & desktop)
+│   ├── LoadingState.tsx       # Spinner
+│   ├── ErrorState.tsx         # Retry UI
+│   └── ReactQueryProvider.tsx # QueryClientProvider wrapper
+├── utils/
+│   ├── api.ts                 # Axios instance + fetchMarketNews helper
+│   └── hooks.ts               # `useMarketNews` (React Query hook)
+├── .env.local                 # API key
+├── tailwind.config.js         # Custom font + theme
+├── jest.config.js             # Testing config (ts‑jest + jsdom)
+└── jest.setup.js              # jest‑dom setup
+🔭 Next Steps & Extras
+Unit/integration tests: Expand coverage to include NewsList, error paths.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Pagination: Implement minId‑based “load more” or infinite scroll.
 
-## Deploy on Vercel
+Accessibility: Add ARIA labels, focus states, and more semantic HTML.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Deployment: Host on Vercel for live demo link.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Thank you for reviewing! I look forward to your feedback.
+— Abiodun Adeleke

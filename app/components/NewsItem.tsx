@@ -39,7 +39,7 @@ export function NewsItem({ image, source, datetime, headline, url }: Props) {
       <div
         className={`
           flex-shrink-0
-          w-[105px] h-[105px]
+          w-[105px] min-h-fit
           md:w-full md:h-[179px]
           rounded-md
           overflow-hidden
@@ -50,27 +50,27 @@ export function NewsItem({ image, source, datetime, headline, url }: Props) {
           <img
             src={image}
             alt={headline}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-fill"
           />
         ) : (
-          // simple empty placeholder; for no image
+          // dear recruiters, i added simple placeholder for no image
           <div className="w-full h-full flex items-center justify-center">
-            <span className="text-gray-600 text-sm">No Image</span>
+            <span className="text-gray-600 text-sm px-4">Hi Recruiter, No Image from Api</span>
           </div>
         )}
       </div>
 
       {/* Text content */}
-      <div className="flex flex-col justify-between flex-1">
+      <div className="flex flex-col justify-between flex-1 pt-3">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-xs text-gray-300 uppercase">
+          <span className="text-xs text-[#FFFFFFB2] uppercase">
             {source}
           </span>
-          <span className="text-xs text-gray-300">
+          <span className="text-xs text-[#FFFFFFB2]">
             {format(new Date(datetime * 1000), 'd MMM yyyy')}
           </span>
         </div>
-        <h3 className="text-sm font-semibold text-white leading-snug">
+        <h3 className="text-[20px] font-[500] text-[#FFFFFF] leading-snug">
           {headline}
         </h3>
       </div>
