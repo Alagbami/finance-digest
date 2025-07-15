@@ -9,7 +9,7 @@ import Link from 'next/link';
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-[#0E0D13]">
+      <body className="bg-[#0E0D13] font-sans">
         {/* HEADER */}
         <header className="bg-[#0E0D13] shadow-md py-4 sm:border-2  sm:border-[#272735] lg:border-none">
           <div className="max-w-6xl mx-auto px-6 flex items-center justify-center">
